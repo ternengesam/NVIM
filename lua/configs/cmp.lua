@@ -56,7 +56,7 @@ local options = {
 
 			vim_item.menu = ({
 				nvim_lsp = "[LSP]",
-				luasnip = "[LUA]",
+				luasnip = "[SNP]",
 				cmp_tabnine = "[TN]",
 				buffer = "[BUF]",
 				path = "[PATH]",

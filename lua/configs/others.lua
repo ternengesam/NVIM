@@ -149,15 +149,15 @@ end
 
 -- hop
 Others.hop = function()
-	local status, hop = pcall(require,"hop")
+	local status, hop = pcall(require, "hop")
 	if status then
 		hop.setup()
 	end
 end
 
 --project
-Others.project = function()
-	local status, project = pcall(require,"project")
+  Others.project = function()
+	  local status, project = pcall(require, "nvim_project")
 	if status then
 		project.setup()
 	end

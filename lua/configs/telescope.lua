@@ -54,7 +54,7 @@ local options = {
 		},
 	},
 
-	extensions_list = { "themes", "terms", "media", "lazygit" },
+	extensions_list = { "projects" },
 }
 
 -- check for any override

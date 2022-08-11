@@ -121,6 +121,8 @@ maps.n["<leader>fW"] = {
 	end,
 	"Search words in all files",
 }
+maps.n["<leader>fp"] = { "<cmd> Telescope projects<cr>", "Recent projects" }
+
 maps.n["<leader>gt"] = {
 	function()
 		require("telescope.builtin").git_status()
@@ -256,7 +258,7 @@ maps.n["<leader>lD"] = {
 -- Terminal
 maps.n["<leader>tf"] = { "<cmd>ToggleTerm direction=float<cr>", "ToggleTerm float" }
 maps.n["<leader>tt"] = { "<cmd>ToggleTerm size=10 direction=tab<cr>", "ToggleTerm in new tab" }
-maps.n["<leader>tv"] = { "<cmd>ToggleTerm size=80 direction=horizontal<cr>", "ToggleTerm horizontal split" }
+maps.n["<leader>tv"] = { "<cmd>ToggleTerm size=80 direction=horizontal<cr>", "ToggleTerm horizontah split" }
 
 -- Stay in indent mode
 maps.v["<"] = { "<gv", "indent line" }
@@ -268,4 +270,12 @@ maps.t["<C-k>"] = { "<c-\\><c-n><c-w>k", "Terminal up window navigation" }
 maps.t["<C-l>"] = { "<c-\\><c-n><c-w>l", "Terminal right window naviation" }
 
 maps.n["<leader><leader>"] = { "<cmd> SourceConfigs<cr>", "Source config files" }
+
+--hop
+
+maps.n["l"] = { "<cmd> HopLine<cr>", "Hop line" }
+maps.n["ls"] = { "<cmd> HopLineStart<cr>", "Hop line start" }
+maps.n["w"] = { "<cmd> HopWord<cr>", "Hop word" }
+maps.n["h"] = {"<cmd> HopAnywhere<cr>", "Hop Anywhere"}
+
 return maps

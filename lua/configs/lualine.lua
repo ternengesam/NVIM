@@ -140,7 +140,7 @@ ins_left({
 			["!"] = colors.red,
 			t = colors.red,
 		}
-		return { bg = mode_color[vim.fn.mode()] or vim.fn.mode, fg = colors.darkblue }
+		return { bg = mode_color[vim.fn.mode()] or vim.fn.mode, fg = colors.fg }
 	end,
 	padding = { right = 1, left = 1 },
 	separator = { right = right_sep },

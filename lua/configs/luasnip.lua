@@ -3,7 +3,8 @@ if not present then
 	return
 end
 local filetype_extend = {
-	javascript = { "javascriptreact" },
+	javascript = { "javascriptreact", "typescriptreact" },
+	typrscript = {"javascriptreact","typescriptreact"}
 }
 
 local options = {

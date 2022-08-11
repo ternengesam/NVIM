@@ -1,11 +1,13 @@
 # NVINIDE
 
-### extensible friendly custom neovim with limitless capabilities
+### extensible and fast neovim config with limitless capabilities
 
 #### screen shots
+
 ![]()
 
-![]() 
+![]()
+
 #### Installation
 
 ##### backup old plugins and configs. (these procedure is optional)

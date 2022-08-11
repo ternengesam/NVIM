@@ -59,14 +59,9 @@ local options = {
 		loaded_vimballPlugin = true, -- disable vimball
 		cmp_enabled = true, -- enable completion at start
 		autopairs_enabled = true, -- enable autopairs at start
-		lazygit_floating_window_winblend = 10,
-		lazygit_floating_window_scaling_factor = 0.9,
-		lazygit_floating_window_corner_chars = { "╭", "╮", "╰", "╯" },
-		lazygit_floating_window_use_plenary = true,
-		lazygit_use_neovim_remote = true,
 		sonokai_style = "andromeda",
 		sonokai_better_performance = true,
-		tokyonight_style = "night",
+		tokyonight_style = "storm",
 		tokyonight_lualine_bold = true,
 	},
 }

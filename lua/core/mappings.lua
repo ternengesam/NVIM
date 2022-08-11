@@ -238,6 +238,8 @@ maps.n["<leader>ls"] = {
 	end,
 	"Search symbols",
 }
+
+maps.n["<leader>at"] = { "<cmd> AerialToggle<cr>", "Aerial Toggle" }
 maps.n["<leader>lR"] = {
 	function()
 		require("telescope.builtin").lsp_references()

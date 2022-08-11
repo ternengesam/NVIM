@@ -138,5 +138,30 @@ Others.terminal = function()
 		})
 	end
 end
+
+--scrollbar
+Others.scrollbar = function()
+	local status, scb = pcall(require, "scrollbar")
+	if status then
+		scb.setup()
+	end
+end
+
+-- hop
+Others.hop = function()
+	local status, hop = pcall(require,"hop")
+	if status then
+		hop.setup()
+	end
+end
+
+--project
+Others.project = function()
+	local status, project = pcall(require,"project")
+	if status then
+		project.setup()
+	end
+end
+
 -- return global
 return Others

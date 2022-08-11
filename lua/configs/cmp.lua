@@ -51,8 +51,16 @@ local options = {
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
 
-		format = function(_, vim_item)
+		format = function(entry, vim_item)
 			vim_item.kind = string.format("%s %s", lspkind.presets.default[vim_item.kind], vim_item.kind)
+
+			vim_item.menu = ({
+				nvim_lsp = "[LSP]",
+				luasnip = "[LUA]",
+				cmp_tabnine = "[TN]",
+				buffer = "[BUF]",
+				path = "[PATH]",
+			})[entry.source.name]
 			return vim_item
 		end,
 	},
@@ -110,6 +118,7 @@ local options = {
 		{ name = "buffer" },
 		{ name = "nvim_lua" },
 		{ name = "path" },
+		{ name = "treesitter" },
 	},
 
 	experimental = { ghost_text = true },

@@ -9,6 +9,19 @@ local plugins = {
 
 	-- Lua functions
 	["nvim-lua/plenary.nvim"] = { module = "plenary" },
+	-- notification
+	["rcarriga/nvim-notify"] = {
+		config = function()
+			require("configs.others").notify()
+		end,
+	},
+
+	--project
+	["ahmedkhalf/project.nvim"] = {
+		config = function()
+			require("configs.others").project()
+		end,
+	},
 
 	-- Cursorhold fix
 	["antoinemadec/FixCursorHold.nvim"] = {
@@ -46,6 +59,7 @@ local plugins = {
 
 	--ui for file oprations
 	["stevearc/dressing.nvim"] = {
+		event = { "BufAdd", "BufDelete" },
 		config = function()
 			require("configs.others").dressing()
 		end,
@@ -85,6 +99,7 @@ local plugins = {
 
 	["glepnir/lspsaga.nvim"] = {
 		branch = "main",
+		event = "BufEnter",
 		config = function()
 			require("configs.lspsaga")
 		end,
@@ -129,6 +144,9 @@ local plugins = {
 		after = "nvim-cmp",
 	},
 
+	--treesitter sorce
+	["ray-x/cmp-treesitter"] = { after = "nvim-cmp" },
+
 	-- tabnine source
 	["tzachar/cmp-tabnine"] = {
 		module = "tabnine",
@@ -168,6 +186,7 @@ local plugins = {
 
 	["stevearc/aerial.nvim"] = {
 		module = "aerial",
+		event = "BufEnter",
 		cmd = { "AerialToggle", "AerialOpen", "AerialInfo" },
 		config = function()
 			require("configs.aerial")
@@ -220,6 +239,7 @@ local plugins = {
 	-- Terminal
 	["akinsho/toggleterm.nvim"] = {
 		tag = "v2.*",
+		event = "BufEnter",
 		config = function()
 			require("configs.others").terminal()
 		end,
@@ -258,6 +278,21 @@ local plugins = {
 		end,
 	},
 
+	--scrollbar
+	["petertriho/nvim-scrollbar"] = {
+		requires = { "kevinhwang91/nvim-hlslens" },
+		config = function()
+			require("configs.others").scrollbar()
+		end,
+	},
+
+	-- hop
+	["phaazon/hop.nvim"] = {
+		branch = "v2",
+		config = function()
+			require("configs.others").hop()
+		end,
+	},
 	-- Smooth escaping
 	["max397574/better-escape.nvim"] = {
 		event = "InsertCharPre",
@@ -268,13 +303,6 @@ local plugins = {
 
 	-- Get extra JSON schemas
 	["b0o/SchemaStore.nvim"] = { module = "schemastore" },
-
-	--lua dev tool
-	["rafcamlet/nvim-luapad"] = {
-		config = function()
-			require("luapad").setup()
-		end,
-	},
 
 	-- gruvbox theme
 	["ellisonleao/gruvbox.nvim"] = {},
@@ -294,6 +322,7 @@ local plugins = {
 		end,
 	},
 
+	--lualine
 	["nvim-lualine/lualine.nvim"] = {
 		config = function()
 			require("configs.lualine")
@@ -305,6 +334,23 @@ local plugins = {
 		tag = "v2.*",
 		config = function()
 			require("configs.bufferline")
+		end,
+	},
+
+	-- debuging
+	["mfussenegger/nvim-dap"] = {
+		disable = false,
+		requires = {},
+		config = function()
+			require("configs.dap").setup()
+		end,
+	},
+
+	-- debugger ui
+	["rcarriga/nvim-dap-ui"] = {
+		after = "nvim-dap",
+		config = function()
+			require("configs.dap").ui()
 		end,
 	},
 }

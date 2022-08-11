@@ -1,10 +1,8 @@
 local present, treesitter = pcall(require, "nvim-treesitter.configs")
-local tag_status, autotag = pcall(require, "autotag")
-if not (present and tag_status) then
+if not present then
 	return
 end
 
-autotag.setup({})
 local options = {
 	ensure_installed = {
 		"lua",
@@ -14,6 +12,7 @@ local options = {
 		"python",
 		"css",
 		"json",
+		"markdown",
 	},
 	highlight = {
 		enable = true,
@@ -32,7 +31,7 @@ local options = {
 	autopairs = { enable = true },
 	autotag = { enable = true },
 	incremental_selection = { enable = true },
-	indent = { enable = false },
+	indent = { enable = true },
 }
-
+require("nvim-ts-autotag").setup()
 treesitter.setup(options)

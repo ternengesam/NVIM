@@ -28,5 +28,6 @@ mv ~/.config/nvim ~/.config/nvim.bak
 
 ```
 git clone https://github.com/3egle/NVINIDE ~/.config/nvim/
+nvim +PackerSync
 
 ```

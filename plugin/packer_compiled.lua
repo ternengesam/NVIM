@@ -204,6 +204,11 @@ _G.packer_plugins = {
     path = "/home/samuel/.local/share/nvim/site/pack/packer/opt/dressing.nvim",
     url = "https://github.com/stevearc/dressing.nvim"
   },
+  edge = {
+    loaded = true,
+    path = "/home/samuel/.local/share/nvim/site/pack/packer/start/edge",
+    url = "https://github.com/sainnhe/edge"
+  },
   ["friendly-snippets"] = {
     loaded = false,
     needs_bufread = false,
@@ -284,6 +289,11 @@ _G.packer_plugins = {
     path = "/home/samuel/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/samuel/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
+  },
   ["null-ls.nvim"] = {
     config = { "\27LJ\2\2/\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\20configs.null_ls\frequire\0" },
     loaded = false,
@@ -301,7 +311,7 @@ _G.packer_plugins = {
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-treesitter", "cmp-buffer", "cmp_luasnip", "cmp-path", "cmp-tabnine", "cmp-nvim-lsp" },
+    after = { "cmp-nvim-lsp", "cmp-treesitter", "cmp-tabnine", "cmp-buffer", "cmp_luasnip", "cmp-path" },
     config = { "\27LJ\2\2+\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\16configs.cmp\frequire\0" },
     loaded = false,
     needs_bufread = false,
@@ -318,7 +328,7 @@ _G.packer_plugins = {
     url = "https://github.com/NvChad/nvim-colorizer.lua"
   },
   ["nvim-dap"] = {
-    after = { "nvim-dap-ui" },
+    after = { "one-small-step-for-vimkind", "nvim-dap-ui" },
     config = { "\27LJ\2\0029\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16configs.dap\frequire\0" },
     loaded = true,
     only_config = true,
@@ -408,6 +418,13 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/home/samuel/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
+  ["one-small-step-for-vimkind"] = {
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/samuel/.local/share/nvim/site/pack/packer/opt/one-small-step-for-vimkind",
+    url = "https://github.com/jbyuki/one-small-step-for-vimkind"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -535,6 +552,10 @@ time([[Config for nvim-lspconfig]], false)
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\0020\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\21configs.nvimtree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
+-- Config for: mason.nvim
+time([[Config for mason.nvim]], true)
+try_loadstring("\27LJ\2\2<\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nmason\19configs.others\frequire\0", "config", "mason.nvim")
+time([[Config for mason.nvim]], false)
 -- Config for: nvim-scrollbar
 time([[Config for nvim-scrollbar]], true)
 try_loadstring("\27LJ\2\2@\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\14scrollbar\19configs.others\frequire\0", "config", "nvim-scrollbar")
@@ -543,10 +564,6 @@ time([[Config for nvim-scrollbar]], false)
 time([[Config for nvim-dap]], true)
 try_loadstring("\27LJ\2\0029\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16configs.dap\frequire\0", "config", "nvim-dap")
 time([[Config for nvim-dap]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-try_loadstring("\27LJ\2\2/\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\20configs.lualine\frequire\0", "config", "lualine.nvim")
-time([[Config for lualine.nvim]], false)
 -- Config for: nvim-notify
 time([[Config for nvim-notify]], true)
 try_loadstring("\27LJ\2\2=\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vnotify\19configs.others\frequire\0", "config", "nvim-notify")
@@ -559,25 +576,26 @@ time([[Config for bufferline.nvim]], false)
 time([[Config for vim-auto-save]], true)
 try_loadstring("\27LJ\2\2+\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\1\0=\1\2\0K\0\1\0\14auto_save\6g\bvim\0", "config", "vim-auto-save")
 time([[Config for vim-auto-save]], false)
--- Config for: mason.nvim
-time([[Config for mason.nvim]], true)
-try_loadstring("\27LJ\2\2<\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nmason\19configs.others\frequire\0", "config", "mason.nvim")
-time([[Config for mason.nvim]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+try_loadstring("\27LJ\2\2/\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\20configs.lualine\frequire\0", "config", "lualine.nvim")
+time([[Config for lualine.nvim]], false)
 -- Config for: project.nvim
 time([[Config for project.nvim]], true)
 try_loadstring("\27LJ\2\2>\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\fproject\19configs.others\frequire\0", "config", "project.nvim")
 time([[Config for project.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
-vim.cmd [[ packadd mason-lspconfig.nvim ]]
-
--- Config for: mason-lspconfig.nvim
-try_loadstring("\27LJ\2\0027\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\28configs.mason_lspconfig\frequire\0", "config", "mason-lspconfig.nvim")
-
 vim.cmd [[ packadd nvim-dap-ui ]]
 
 -- Config for: nvim-dap-ui
 try_loadstring("\27LJ\2\0026\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\aui\16configs.dap\frequire\0", "config", "nvim-dap-ui")
+
+vim.cmd [[ packadd one-small-step-for-vimkind ]]
+vim.cmd [[ packadd mason-lspconfig.nvim ]]
+
+-- Config for: mason-lspconfig.nvim
+try_loadstring("\27LJ\2\0027\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\28configs.mason_lspconfig\frequire\0", "config", "mason-lspconfig.nvim")
 
 time([[Sequenced loading]], false)
 
@@ -599,19 +617,19 @@ time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
-vim.cmd [[noremap <silent> g> <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "g>", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> gb <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "gb", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> g< <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "g<lt>", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> g> <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "g>", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> gc <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "gc", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> gb <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "gb", prefix = "" }, _G.packer_plugins)<cr>]]
 time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'nvim-treesitter', 'cinnamon.nvim', 'FixCursorHold.nvim', 'nvim-colorizer.lua', 'null-ls.nvim'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
+vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'nvim-treesitter', 'cinnamon.nvim', 'FixCursorHold.nvim', 'null-ls.nvim', 'nvim-colorizer.lua'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
 vim.cmd [[au BufAdd * ++once lua require("packer.load")({'dressing.nvim'}, { event = "BufAdd *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'cinnamon.nvim', 'FixCursorHold.nvim', 'nvim-colorizer.lua', 'null-ls.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'cinnamon.nvim', 'FixCursorHold.nvim', 'null-ls.nvim', 'nvim-colorizer.lua'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au BufDelete * ++once lua require("packer.load")({'dressing.nvim'}, { event = "BufDelete *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertCharPre * ++once lua require("packer.load")({'better-escape.nvim'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-autopairs', 'nvim-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]

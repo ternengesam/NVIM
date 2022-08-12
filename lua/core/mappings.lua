@@ -276,6 +276,56 @@ maps.n["<leader><leader>"] = { "<cmd> SourceConfigs<cr>", "Source config files" 
 maps.n["l"] = { "<cmd> HopLine<cr>", "Hop line" }
 maps.n["ls"] = { "<cmd> HopLineStart<cr>", "Hop line start" }
 maps.n["w"] = { "<cmd> HopWord<cr>", "Hop word" }
-maps.n["h"] = {"<cmd> HopAnywhere<cr>", "Hop Anywhere"}
+maps.n["h"] = { "<cmd> HopAnywhere<cr>", "Hop Anywhere" }
+
+-- dabugging
+maps.n["<leader>d"] = { name = "debug" }
+maps.n["<leader>dl"] = {
+	function()
+		require("osv").launch()
+	end,
+	"launch osv for lua",
+}
+maps.n["<leader>dr"] = {
+	function()
+		require("osv").run_this()
+	end,
+	"run osv for current lua file",
+}
+
+maps.n["<leader>du"] = { name = "ui" }
+maps.n["<leader>duo"] = {
+	function()
+		require("dapui").open()
+	end,
+	"dapui open",
+}
+
+maps.n["<leader>duc"] = {
+	function()
+		require("dapui").Close()
+	end,
+	"dapui close",
+}
+
+maps.n["<leader>dut"] = {
+	function()
+		require("dapui").toggle()
+	end,
+	"dapui toggle",
+}
+maps.n["<leader>due"] = {
+	function()
+		require("dapui").eval()
+	end,
+	"dapui evaluate",
+}
+
+maps.n["<leader>duf"] = {
+	function()
+		require("dapui").float_element(data, { width = 50, height = 30, enter = true })
+			end,
+	"dapui float",
+}
 
 return maps

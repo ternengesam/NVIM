@@ -1,7 +1,19 @@
-local dap = {}
+local M = {}
+local status, dap = pcall(require, "dap")
+local ui_status, dapui = pcall(require, "dapui")
+if not status and ui_status then
+	return
+end
 
-dap.ui = function() end
+M.ui = function()
+	require("configs.dap.ui").ui(dapui)
+end
 
-dap.setup = function() end
+M.setup = function()
+	require("configs.dap.addapters.javascript").adapter(dap)
+	require("configs.dap.addapters.nodejs").adater(dap)
+	require("configs.dap.addapters.python").adapter(dap)
+	require("configs.dap.addapters.lua").adapter(dap)
+end
 
-return dap
+return M

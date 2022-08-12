@@ -303,7 +303,8 @@ local plugins = {
 
 	-- Get extra JSON schemas
 	["b0o/SchemaStore.nvim"] = { module = "schemastore" },
-
+-- edge theme 
+  ["sainnhe/edge"] = {},
 	-- gruvbox theme
 	["ellisonleao/gruvbox.nvim"] = {},
 
@@ -345,6 +346,11 @@ local plugins = {
 			require("configs.dap").setup()
 		end,
 	},
+	-- dabugger manager
+	["jbyuki/one-small-step-for-vimkind"] = {
+		disable = false,
+		after = "nvim-dap",
+	},
 
 	-- debugger ui
 	["rcarriga/nvim-dap-ui"] = {
@@ -353,5 +359,8 @@ local plugins = {
 			require("configs.dap").ui()
 		end,
 	},
+
+	-- ui component 
+	["MunifTanjim/nui.nvim"] = {}
 }
 require("core.packer").run(plugins)

@@ -60,13 +60,17 @@ local options = {
 		cmp_enabled = true, -- enable completion at start
 		autopairs_enabled = true, -- enable autopairs at start
 		sonokai_style = "andromeda",
+		edge_style = "aura",
+		edge_better_performance = true,
 		sonokai_better_performance = true,
 		tokyonight_style = "storm",
+		edge_enable_italic = true,
+		edge_cursor = "red",
 		tokyonight_lualine_bold = true,
 	},
 }
 
-vim.cmd([[colorscheme sonokai]])
+vim.cmd([[colorscheme edge]])
 
 for key, value in pairs(options.opt) do
 	vim.opt[key] = value

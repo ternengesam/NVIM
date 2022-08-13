@@ -26,11 +26,19 @@ M.run = function(plugins)
 	---
 	local table = {}
 	---
+	--
+	local disable = {}
+	---
+
 	for key, _ in pairs(plugins) do
 		plugins[key][1] = key
 		table[#table + 1] = plugins[key]
 	end
 	---
+	for _, item in pairs(disable) do
+		table = vim.tbl_deep_extend("force", table, { { item, disable = true } })
+		--	print(vim.inspect(table))
+	end
 	return packer.startup(function(use)
 		for _, value in pairs(table) do
 			use(value)

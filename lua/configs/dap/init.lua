@@ -1,4 +1,5 @@
 local M = {}
+
 local status, dap = pcall(require, "dap")
 local ui_status, dapui = pcall(require, "dapui")
 local js_ok, js = pcall(require, "dap-vscode-js")
@@ -13,10 +14,20 @@ M.py = function()
 	require("dap-python").setup(vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python")
 end
 M.setup = function()
-	require("configs.dap.adapters.javascript").adapter(dap, js)
-	require("configs.dap.adapters.nodejs").adater(dap)
-	require("configs.dap.adapters.python").adapter(dap)
-	require("configs.dap.adapters.lua").adapter(dap)
+	local filetype = vim.o.filetype
+
+	if filetype == "lua" then
+		require("configs.dap.adapters.lua").adapter(dap)
+	end
+
+	if filetype == ("javascript" or "typescript" or "javascriptreact" or "typescriptreact") then
+		require("configs.dap.adapters.javascript").adapter(dap, js)
+		require("configs.dap.adapters.nodejs").adater(dap)
+	end
+
+	if filetype == "python" then
+		require("configs.dap.adapters.python").adapter(dap)
+	end
 end
 
 return M

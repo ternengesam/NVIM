@@ -49,7 +49,7 @@ local plugins = {
 	},
 
 	-- LSP Icons
-	["onsails/lspkind.nvim"] = { module = "lspkind" },
+	["onsails/lspkind.nvim"] = { module = "lspkind", event = "InsertEnter" },
 
 	-- File explorer
 	["kyazdani42/nvim-tree.lua"] = {
@@ -61,7 +61,7 @@ local plugins = {
 
 	--ui for file oprations
 	["stevearc/dressing.nvim"] = {
-		event = { "BufAdd", "BufDelete" },
+		event = { "BufEnter", "BufAdd", "BufDelete" },
 		config = function()
 			require("configs.others").dressing()
 		end,
@@ -73,11 +73,12 @@ local plugins = {
 	-- Autoclose tags
 	["windwp/nvim-ts-autotag"] = {
 		wants = "nvim-treesitter",
+		ft = { "jsx", "tsx", "html" },
 		event = "InsertEnter",
 	},
 
 	-- Context based commenting
-	["JoosepAlviste/nvim-ts-context-commentstring"] = { after = "nvim-treesitter" },
+	["JoosepAlviste/nvim-ts-context-commentstring"] = { event = "BufEnter", after = "nvim-treesitter" },
 
 	-- Syntax highlighting
 	["nvim-treesitter/nvim-treesitter"] = {
@@ -102,17 +103,18 @@ local plugins = {
 
 	["glepnir/lspsaga.nvim"] = {
 		branch = "main",
-		event = "BufEnter",
+		event = "InsertEnter",
 		config = function()
 			require("configs.lspsaga")
 		end,
 	},
 	-- Snippet collection
-	["rafamadriz/friendly-snippets"] = { event = "BufEnter" },
+	["rafamadriz/friendly-snippets"] = { event = "InsertEnter" },
 
 	-- Snippet engine
 	["L3MON4D3/LuaSnip"] = {
 		module = "luasnip",
+		event = "InsertEnter",
 		wants = "friendly-snippets",
 		config = function()
 			require("configs.luasnip")
@@ -144,7 +146,7 @@ local plugins = {
 
 	-- LSP completion source
 	["hrsh7th/cmp-nvim-lsp"] = {
-		after = "nvim-cmp",
+		after = "InsertEnter",
 	},
 
 	--treesitter sorce
@@ -166,6 +168,7 @@ local plugins = {
 
 	-- Package Manager
 	["williamboman/mason.nvim"] = {
+		event = "BufEnter",
 		config = function()
 			require("configs.others").mason()
 		end,
@@ -187,7 +190,7 @@ local plugins = {
 	},
 
 	-- signature help provider
-	["ray-x/lsp_signature.nvim"] = {},
+	["ray-x/lsp_signature.nvim"] = { event = "InsertEnter" },
 
 	-- LSP symbols
 
@@ -212,6 +215,7 @@ local plugins = {
 	["nvim-telescope/telescope.nvim"] = {
 		cmd = "Telescope",
 		module = "telescope",
+		event = "BufEnter",
 		config = function()
 			require("configs.telescope")
 		end,
@@ -254,6 +258,7 @@ local plugins = {
 
 	-- Commenting
 	["numToStr/Comment.nvim"] = {
+		event = "BufEnter",
 		module = { "Comment", "Comment.api" },
 		keys = { "gc", "gb", "g<", "g>" },
 		config = function()
@@ -271,6 +276,7 @@ local plugins = {
 
 	-- Keymaps popup
 	["folke/which-key.nvim"] = {
+		event = "BufEnter",
 		module = "which-key",
 		config = function()
 			require("configs.whichkey")
@@ -287,7 +293,8 @@ local plugins = {
 
 	--scrollbar
 	["petertriho/nvim-scrollbar"] = {
-		requires = { "kevinhwang91/nvim-hlslens" },
+		event = "BufEnter",
+		requires = { { "kevinhwang91/nvim-hlslens", opt = true } },
 		config = function()
 			require("configs.others").scrollbar()
 		end,
@@ -311,13 +318,14 @@ local plugins = {
 	},
 
 	-- Get extra JSON schemas
-	["b0o/SchemaStore.nvim"] = { module = "schemastore" },
+	["b0o/SchemaStore.nvim"] = { module = "schemastore", event = "InsertEnter", ft = "json" },
 
 	--one dark
 	["navarasu/onedark.nvim"] = {},
 	["EdenEast/nightfox.nvim"] = {},
 	-- auto save
 	["907th/vim-auto-save"] = {
+		event = "InsertEnter",
 		config = function()
 			vim.g.auto_save = 1
 		end,
@@ -325,6 +333,7 @@ local plugins = {
 
 	--lualine
 	["nvim-lualine/lualine.nvim"] = {
+		event = "BufEnter",
 		config = function()
 			require("configs.lualine")
 		end,
@@ -332,6 +341,7 @@ local plugins = {
 
 	-- ui/bufferline
 	["akinsho/bufferline.nvim"] = {
+		event = "BufEnter",
 		tag = "v2.*",
 		config = function()
 			require("configs.bufferline")
@@ -350,12 +360,14 @@ local plugins = {
 	-- lua adapter
 	["jbyuki/one-small-step-for-vimkind"] = {
 		disable = false,
+		ft = "lua",
 		after = "nvim-dap",
 	},
 
 	--python adapter
 	["mfussenegger/nvim-dap-python"] = {
 		after = "nvim-dap",
+		ft = "python",
 		config = function()
 			require("configs.dap").py()
 		end,
@@ -364,6 +376,7 @@ local plugins = {
 	-- javascript adapter
 	["mxsdev/nvim-dap-vscode-js"] = {
 		wants = "nvim-dap",
+		ft = { "javascript", "jsx", "typescript", "tsx" },
 		disable = false,
 	},
 
@@ -371,6 +384,7 @@ local plugins = {
 		commit = "c75e8d5",
 		opt = true,
 		event = "BufEnter",
+		ft = { "javascript", "jsx", "typescript", "tsx" },
 		run = "npm install --legacy-peer-deps && npm run compile",
 	},
 
@@ -383,6 +397,6 @@ local plugins = {
 	},
 
 	-- ui component
-	["MunifTanjim/nui.nvim"] = { opt = true },
+	["MunifTanjim/nui.nvim"] = { event = "BufEnter" },
 }
 require("core.packer").run(plugins)

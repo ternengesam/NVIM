@@ -62,10 +62,6 @@ local options = {
 	},
 }
 --require("nightfox").setup()
-require("onedark").setup({
-	style = "dark",
-})
-
 require("nightfox").setup({
 	options = {
 		styles = {

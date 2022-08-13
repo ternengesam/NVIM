@@ -61,10 +61,21 @@ local options = {
 		autopairs_enabled = true, -- enable autopairs at start
 	},
 }
+--require("nightfox").setup()
 require("onedark").setup({
 	style = "dark",
 })
-vim.cmd([[colorscheme onedark]])
+
+require("nightfox").setup({
+	options = {
+		styles = {
+			comments = "italic",
+			keywords = "bold,italic",
+			types = "italic,bold",
+		},
+	},
+})
+vim.cmd([[colorscheme nightfox]])
 
 for key, value in pairs(options.opt) do
 	vim.opt[key] = value

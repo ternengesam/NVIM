@@ -21,14 +21,14 @@ local options = {
 	},
 
 	window = {
-		border = "none", -- none/single/double/shadow
-		padding = { 2, 2, 2, 2 },
+		border = "rounded", -- none/single/double/shadow
+		padding = { 1, 1, 1, 1 },
 	},
 	layout = {
-		height = { min = 4, max = 25 },
-		width = { min = 20, max = 50 },
+		height = { min = 4, max = 15 },
+		width = { min = 20, max = 100 },
 		align = "left",
-		spacing = 6, -- spacing between columns
+		spacing = 4, -- spacing between columns
 	},
 
 	hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " },

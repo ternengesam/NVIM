@@ -315,7 +315,7 @@ local plugins = {
 
 	--one dark
 	["navarasu/onedark.nvim"] = {},
-
+	["EdenEast/nightfox.nvim"] = {},
 	-- auto save
 	["907th/vim-auto-save"] = {
 		config = function()
@@ -370,15 +370,16 @@ local plugins = {
 	["microsoft/vscode-js-debug"] = {
 		commit = "c75e8d5",
 		opt = true,
+		event = "BufEnter",
 		run = "npm install --legacy-peer-deps && npm run compile",
 	},
 
 	-- debugger ui
 	["rcarriga/nvim-dap-ui"] = {
 		after = "nvim-dap",
-		config = function()
-			require("configs.dap").ui()
-		end,
+		-- config = function()
+		-- 	require("configs.dap").ui()
+		-- end,
 	},
 
 	-- ui component

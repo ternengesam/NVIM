@@ -34,6 +34,7 @@ local plugins = {
 	-- Smarter Splits
 	["mrjones2014/smart-splits.nvim"] = {
 		module = "smart-splits",
+		event = { "BufRead", "BufEnter" },
 		config = function()
 			require("configs.others").smartsplits()
 		end,
@@ -52,6 +53,7 @@ local plugins = {
 
 	-- File explorer
 	["kyazdani42/nvim-tree.lua"] = {
+		event = "BufEnter",
 		config = function()
 			require("configs.nvimtree")
 		end,
@@ -66,11 +68,12 @@ local plugins = {
 	},
 
 	-- Parenthesis highlighting
-	["p00f/nvim-ts-rainbow"] = { after = "nvim-treesitter" },
+	["p00f/nvim-ts-rainbow"] = { wants = "nvim-treesitter", event = "BufEnter" },
 
 	-- Autoclose tags
 	["windwp/nvim-ts-autotag"] = {
-		after = "nvim-treesitter",
+		wants = "nvim-treesitter",
+		event = "InsertEnter",
 	},
 
 	-- Context based commenting
@@ -105,7 +108,7 @@ local plugins = {
 		end,
 	},
 	-- Snippet collection
-	["rafamadriz/friendly-snippets"] = { opt = true },
+	["rafamadriz/friendly-snippets"] = { event = "BufEnter" },
 
 	-- Snippet engine
 	["L3MON4D3/LuaSnip"] = {
@@ -147,6 +150,10 @@ local plugins = {
 	--treesitter sorce
 	["ray-x/cmp-treesitter"] = { after = "nvim-cmp" },
 
+	["RRethy/nvim-treesitter-endwise"] = {
+		wants = "nvim-treesitter",
+		event = "InsertEnter",
+	},
 	-- tabnine source
 	["tzachar/cmp-tabnine"] = {
 		module = "tabnine",
@@ -288,11 +295,13 @@ local plugins = {
 
 	-- hop
 	["phaazon/hop.nvim"] = {
+		event = "BufEnter",
 		branch = "v2",
 		config = function()
 			require("configs.others").hop()
 		end,
 	},
+
 	-- Smooth escaping
 	["max397574/better-escape.nvim"] = {
 		event = "InsertCharPre",
@@ -303,18 +312,9 @@ local plugins = {
 
 	-- Get extra JSON schemas
 	["b0o/SchemaStore.nvim"] = { module = "schemastore" },
--- edge theme 
-  ["sainnhe/edge"] = {},
-	-- gruvbox theme
-	["ellisonleao/gruvbox.nvim"] = {},
 
-	--sonokai theme
-	["sainnhe/sonokai"] = {},
-	-- night fly
-
-	["bluz71/vim-nightfly-guicolors"] = {},
-	---
-	["folke/tokyonight.nvim"] = {},
+	--one dark
+	["navarasu/onedark.nvim"] = {},
 
 	-- auto save
 	["907th/vim-auto-save"] = {
@@ -341,15 +341,36 @@ local plugins = {
 	-- debuging
 	["mfussenegger/nvim-dap"] = {
 		disable = false,
-		requires = {},
+		opt = true,
+		event = { "BufEnter", "BufRead" },
 		config = function()
 			require("configs.dap").setup()
 		end,
 	},
-	-- dabugger manager
+	-- lua adapter
 	["jbyuki/one-small-step-for-vimkind"] = {
 		disable = false,
 		after = "nvim-dap",
+	},
+
+	--python adapter
+	["mfussenegger/nvim-dap-python"] = {
+		after = "nvim-dap",
+		config = function()
+			require("configs.dap").py()
+		end,
+	},
+
+	-- javascript adapter
+	["mxsdev/nvim-dap-vscode-js"] = {
+		wants = "nvim-dap",
+		disable = false,
+	},
+
+	["microsoft/vscode-js-debug"] = {
+		commit = "c75e8d5",
+		opt = true,
+		run = "npm install --legacy-peer-deps && npm run compile",
 	},
 
 	-- debugger ui
@@ -360,7 +381,7 @@ local plugins = {
 		end,
 	},
 
-	-- ui component 
-	["MunifTanjim/nui.nvim"] = {}
+	-- ui component
+	["MunifTanjim/nui.nvim"] = { opt = true },
 }
 require("core.packer").run(plugins)

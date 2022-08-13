@@ -8,7 +8,9 @@ end
 M.ui = function()
 	require("configs.dap.ui").ui(dapui)
 end
-
+M.py = function()
+  require("dap-python").setup(vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python")
+ end
 M.setup = function()
 	require("configs.dap.addapters.javascript").adapter(dap)
 	require("configs.dap.addapters.nodejs").adater(dap)

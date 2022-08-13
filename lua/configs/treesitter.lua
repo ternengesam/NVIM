@@ -29,9 +29,8 @@ local options = {
 		max_file_lines = nil,
 	},
 	autopairs = { enable = true },
-	autotag = { enable = true },
+	autotag = { enable = true, filetypes = { "jsx", "tsx", "html","javascriptreact","typescriptreact" } },
 	incremental_selection = { enable = true },
 	indent = { enable = true },
 }
-require("nvim-ts-autotag").setup()
 treesitter.setup(options)

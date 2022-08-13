@@ -280,13 +280,14 @@ maps.n["h"] = { "<cmd> HopAnywhere<cr>", "Hop Anywhere" }
 
 -- dabugging
 maps.n["<leader>d"] = { name = "debug" }
-maps.n["<leader>dl"] = {
+maps.n["<leader>dl"] = { name = "debug lua" }
+maps.n["<leader>dll"] = {
 	function()
 		require("osv").launch()
 	end,
 	"launch osv for lua",
 }
-maps.n["<leader>dr"] = {
+maps.n["<leader>dlr"] = {
 	function()
 		require("osv").run_this()
 	end,
@@ -324,8 +325,27 @@ maps.n["<leader>due"] = {
 maps.n["<leader>duf"] = {
 	function()
 		require("dapui").float_element(data, { width = 50, height = 30, enter = true })
-			end,
+	end,
 	"dapui float",
+}
+maps.n["<leader>dp"] = { name = "debug python" }
+maps.n["<leader>dpm"] = {
+	function()
+		require("dap-python").test_method()
+	end,
+	"test method above cursor",
+}
+maps.n["<leader>dpc"] = {
+	function()
+		require("dap-python").test_class()
+	end,
+	"test class above cursor",
+}
+maps.n["<leader>dps"] = {
+	function()
+		require("dap-python").debug_selection()
+	end,
+	"debug selection",
 }
 
 return maps

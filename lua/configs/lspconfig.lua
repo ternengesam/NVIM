@@ -37,7 +37,23 @@ M.capabilities.textDocument.completion.completionItem = {
 		},
 	},
 }
-local servers = { "html", "tsserver", "jsonls", "svelte", "tailwindcss", "cssmodules_ls", "pyright" }
+local servers = {
+	"html",
+	"tsserver",
+	"svelte",
+	"vimls",
+	"tailwindcss",
+	"cssmodules_ls",
+	"pyright",
+	"rome",
+	"quick_lint_js",
+	"pylsp",
+	"marksman",
+	"jsonls",
+	"emmet_ls",
+	"cssls",
+	"eslint",
+}
 
 for _, lsp in ipairs(servers) do
 	if lsp == "tsserver" then

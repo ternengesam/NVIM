@@ -61,7 +61,6 @@ local options = {
 		autopairs_enabled = true, -- enable autopairs at start
 	},
 }
---require("nightfox").setup()
 require("nightfox").setup({
 	options = {
 		styles = {

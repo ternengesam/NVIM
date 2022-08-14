@@ -352,7 +352,7 @@ local plugins = {
 	["mfussenegger/nvim-dap"] = {
 		disable = false,
 		opt = true,
-		event = { "BufEnter", "BufRead" },
+		event = { "BufEnter" },
 		config = function()
 			require("configs.dap").setup()
 		end,
@@ -361,12 +361,10 @@ local plugins = {
 	["jbyuki/one-small-step-for-vimkind"] = {
 		disable = false,
 		ft = "lua",
-		after = "nvim-dap",
 	},
 
 	--python adapter
 	["mfussenegger/nvim-dap-python"] = {
-		after = "nvim-dap",
 		ft = "python",
 		config = function()
 			require("configs.dap").py()
@@ -391,9 +389,6 @@ local plugins = {
 	-- debugger ui
 	["rcarriga/nvim-dap-ui"] = {
 		after = "nvim-dap",
-		-- config = function()
-		-- 	require("configs.dap").ui()
-		-- end,
 	},
 
 	-- ui component

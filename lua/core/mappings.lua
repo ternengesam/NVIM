@@ -31,12 +31,12 @@ maps.n[">b"] = { "<cmd>BufferLineMoveNext<cr>", "Move buffer tab left" }
 -- Comment
 maps.n["<leader>/"] = {
 	function()
-		require("Comment.api").toggle_current_linewise()
+		require("Comment.api").toggle.linewise()
 	end,
 	"Comment line",
 }
 maps.v["<leader>/"] = {
-	"<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<cr>",
+	"<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
 	"Toggle comment line",
 }
 

@@ -210,6 +210,7 @@ local plugins = {
 	},
 	--alpa
 	["goolord/alpha-nvim"] = {
+		disable = true,
 		config = function()
 			require("configs.alpha")
 		end,

@@ -16,13 +16,6 @@ local plugins = {
 		end,
 	},
 
-	--project
-	["ahmedkhalf/project.nvim"] = {
-		config = function()
-			require("configs.others").project()
-		end,
-	},
-
 	-- Cursorhold fix
 	["antoinemadec/FixCursorHold.nvim"] = {
 		event = { "BufRead", "BufNewFile" },
@@ -43,9 +36,6 @@ local plugins = {
 	-- Icons
 	["kyazdani42/nvim-web-devicons"] = {
 		module = "nvim-web-devicons",
-		config = function()
-			require("configs.icons")
-		end,
 	},
 
 	-- LSP Icons
@@ -77,9 +67,6 @@ local plugins = {
 		event = "InsertEnter",
 	},
 
-	-- Context based commenting
-	["JoosepAlviste/nvim-ts-context-commentstring"] = { event = "BufEnter", after = "nvim-treesitter" },
-
 	-- Syntax highlighting
 	["nvim-treesitter/nvim-treesitter"] = {
 		run = ":TSUpdate",
@@ -99,15 +86,6 @@ local plugins = {
 		end,
 	},
 
-	-- lsp saga
-
-	["glepnir/lspsaga.nvim"] = {
-		branch = "main",
-		event = "InsertEnter",
-		config = function()
-			require("configs.lspsaga")
-		end,
-	},
 	-- Snippet collection
 	["rafamadriz/friendly-snippets"] = { event = "InsertEnter" },
 
@@ -230,7 +208,12 @@ local plugins = {
 			require("configs.others").gitsigns()
 		end,
 	},
-
+	--alpa
+	["goolord/alpha-nvim"] = {
+		config = function()
+			require("configs.alpha")
+		end,
+	},
 	-- Color highlighting
 	["NvChad/nvim-colorizer.lua"] = {
 		event = { "BufRead", "BufNewFile" },
@@ -250,6 +233,8 @@ local plugins = {
 	-- Terminal
 	["akinsho/toggleterm.nvim"] = {
 		tag = "v2.*",
+		cmd = "ToggleTerm",
+		opt = true,
 		event = "BufEnter",
 		config = function()
 			require("configs.others").terminal()
@@ -261,9 +246,6 @@ local plugins = {
 		event = "BufEnter",
 		module = { "Comment", "Comment.api" },
 		keys = { "gc", "gb", "g<", "g>" },
-		config = function()
-			require("configs.comment")
-		end,
 	},
 
 	-- Indentation
@@ -351,7 +333,7 @@ local plugins = {
 	["mfussenegger/nvim-dap"] = {
 		disable = false,
 		opt = true,
-		event = { "BufEnter" },
+		cmd = { "DapToggleBreakpoint", "DapToggleRepl", "DapContinue" },
 		config = function()
 			require("configs.dap").setup()
 		end,
@@ -360,11 +342,13 @@ local plugins = {
 	["jbyuki/one-small-step-for-vimkind"] = {
 		disable = false,
 		ft = "lua",
+		after = "nvim-dap",
 	},
 
 	--python adapter
 	["mfussenegger/nvim-dap-python"] = {
 		ft = "python",
+		after = "nvim-dap",
 		config = function()
 			require("configs.dap").py()
 		end,
@@ -373,6 +357,7 @@ local plugins = {
 	-- javascript adapter
 	["mxsdev/nvim-dap-vscode-js"] = {
 		wants = "nvim-dap",
+		after = "nvim-dap",
 		ft = { "javascript", "jsx", "typescript", "tsx" },
 		disable = false,
 	},
@@ -389,8 +374,5 @@ local plugins = {
 	["rcarriga/nvim-dap-ui"] = {
 		after = "nvim-dap",
 	},
-
-	-- ui component
-	["MunifTanjim/nui.nvim"] = { event = "BufEnter" },
 }
 require("core.packer").run(plugins)

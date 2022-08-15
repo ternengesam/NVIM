@@ -1,4 +1,4 @@
-local present, masonlspconfig = pcall(require, "mason-lspconfig")
+  local present, masonlspconfig = pcall(require, "mason-lspconfig")
 
 if not present then
   return

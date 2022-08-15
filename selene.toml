@@ -1,0 +1,4 @@
+[rules]
+unused_vaiable = "warn"
+globals:
+  vim: any

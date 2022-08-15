@@ -52,7 +52,6 @@ local servers = {
 	"jsonls",
 	"emmet_ls",
 	"cssls",
-	"eslint",
 }
 
 for _, lsp in ipairs(servers) do

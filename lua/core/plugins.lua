@@ -146,7 +146,7 @@ local plugins = {
 
 	-- LSP completion source
 	["hrsh7th/cmp-nvim-lsp"] = {
-		after = "InsertEnter",
+		event = "InsertEnter",
 	},
 
 	--treesitter sorce
@@ -321,8 +321,7 @@ local plugins = {
 	["b0o/SchemaStore.nvim"] = { module = "schemastore", event = "InsertEnter", ft = "json" },
 
 	--one dark
-	["navarasu/onedark.nvim"] = {},
-	["EdenEast/nightfox.nvim"] = {},
+	["Mofiqul/dracula.nvim"] = {},
 	-- auto save
 	["907th/vim-auto-save"] = {
 		event = "InsertEnter",

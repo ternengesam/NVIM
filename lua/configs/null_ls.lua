@@ -13,12 +13,12 @@ local sources = {
 	}),
 	b.formatting.black,
 	-- Set a linter
-	b.diagnostics.eslint_d,
+
 	b.diagnostics.selene,
 	b.diagnostics.flake8,
-	b.diagnostics.pylint,
+	
 	-- set for code actions
-	b.code_actions.eslint_d,
+	
 	b.code_actions.gitsigns,
 }
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

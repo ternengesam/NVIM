@@ -134,16 +134,7 @@ local plugins = {
 		wants = "nvim-treesitter",
 		event = "InsertEnter",
 	},
-	-- tabnine source
-	["tzachar/cmp-tabnine"] = {
-		module = "tabnine",
-		after = "nvim-cmp",
-		run = "./install.sh",
-		config = function()
-			require("configs.others").tabnine()
-		end,
-	},
-
+  	
 	-- Package Manager
 	["williamboman/mason.nvim"] = {
 		event = "BufEnter",
@@ -327,53 +318,7 @@ local plugins = {
 		tag = "v2.*",
 		config = function()
 			require("configs.bufferline")
-		end,
-	},
-
-	-- debuging
-	["mfussenegger/nvim-dap"] = {
-		disable = false,
-		opt = true,
-		cmd = { "DapToggleBreakpoint", "DapToggleRepl", "DapContinue" },
-		config = function()
-			require("configs.dap").setup()
-		end,
-	},
-	-- lua adapter
-	["jbyuki/one-small-step-for-vimkind"] = {
-		disable = false,
-		ft = "lua",
-		after = "nvim-dap",
-	},
-
-	--python adapter
-	["mfussenegger/nvim-dap-python"] = {
-		ft = "python",
-		after = "nvim-dap",
-		config = function()
-			require("configs.dap").py()
-		end,
-	},
-
-	-- javascript adapter
-	["mxsdev/nvim-dap-vscode-js"] = {
-		wants = "nvim-dap",
-		after = "nvim-dap",
-		ft = { "javascript", "jsx", "typescript", "tsx" },
-		disable = false,
-	},
-
-	["microsoft/vscode-js-debug"] = {
-		commit = "c75e8d5",
-		opt = true,
-		event = "BufEnter",
-		ft = { "javascript", "jsx", "typescript", "tsx" },
-		run = "npm install --legacy-peer-deps && npm run compile",
-	},
-
-	-- debugger ui
-	["rcarriga/nvim-dap-ui"] = {
-		after = "nvim-dap",
-	},
+		end
+	}
 }
 require("core.packer").run(plugins)

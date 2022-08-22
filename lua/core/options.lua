@@ -2,7 +2,7 @@ local options = {
 	opt = {
 		backspace = vim.opt.backspace + { "nostop" }, -- Don't stop backspace at insert
 		clipboard = "unnamedplus", -- Connection to the system clipboard
-		cmdheight = 0, -- hide command line unless needed
+		cmdheight = 1, -- hide command line unless needed
 		completeopt = { "menuone", "noselect" }, -- Options for insert mode completion
 		copyindent = true, -- Copy the previous indentation on autoindenting
 		cursorline = true, -- Highlight the text line of the cursor
@@ -66,6 +66,7 @@ vim.cmd([[colorscheme dracula]])
 for key, value in pairs(options.opt) do
 	vim.opt[key] = value
 end
+
 for key, value in pairs(options.g) do
 	vim.g[key] = value
 end

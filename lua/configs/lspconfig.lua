@@ -45,6 +45,7 @@ local servers = {
 	"tailwindcss",
 	"cssmodules_ls",
 	"pyright",
+	"pylsp",
 	"rome",
 	"quick_lint_js",
 	"pylsp",

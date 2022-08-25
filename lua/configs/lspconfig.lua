@@ -7,10 +7,18 @@ end
 local M = {}
 
 -- export on_attach & capabilities for custom lspconfigs
+if not present then
+  return
+end
 
 M.on_attach = function(client, bufnr)
-	client.server_capabilities.documentFormattingProvider = false
-	client.server_capabilities.documentRangeFormattingProvider = false
+  if vim.version().minor < 8 then
+	  client.server_capabilities.document_formatting = false
+	  client.server_capabilities.document_range_formatting= false
+  else
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormatting = false
+  end
 
 	if client.server_capabilities.signatureHelpProvider then
 		require("lsp_signature").setup(client, bufnr)
@@ -40,15 +48,12 @@ M.capabilities.textDocument.completion.completionItem = {
 local servers = {
 	"html",
 	"tsserver",
+	"rome",
 	"svelte",
 	"vimls",
 	"tailwindcss",
 	"cssmodules_ls",
 	"pyright",
-	"pylsp",
-	"rome",
-	"quick_lint_js",
-	"pylsp",
 	"marksman",
 	"jsonls",
 	"emmet_ls",
@@ -56,26 +61,12 @@ local servers = {
 }
 
 for _, lsp in ipairs(servers) do
-	if lsp == "tsserver" then
-		lspconfig.tsserver.setup({
-			on_attach = M.on_attach,
-			filetypes = {
-				"typescript",
-				"typescriptreact",
-				"typescript.tsx",
-				"javascript",
-				"javascriptreact",
-				"javascript.jsx",
-			},
-			cmd = { "typescript-language-server", "--stdio" },
-			capabilities = M.capabilities,
-		})
-	end
 	lspconfig[lsp].setup({
 		on_attach = M.on_attach,
 		capabilities = M.capabilities,
 	})
 end
+
 lspconfig.sumneko_lua.setup({
 	on_attach = M.on_attach,
 	capabilities = M.capabilities,

@@ -86,7 +86,7 @@ Others.notify = function()
 	if not status_ok then
 		return
 	end
-	notify.setup({ stages = "fade" })
+	notify.setup({ stages = "fade",timeout = 500 })
 	vim.notify = notify
 end
 

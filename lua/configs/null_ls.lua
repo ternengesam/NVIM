@@ -7,15 +7,14 @@ end
 local b = null_ls.builtins
 local sources = {
 	-- Set a formatter
-	b.formatting.stylua,
+
 	b.formatting.prettierd.with({
 		extra_filetypes = { "svelte" },
 	}),
 	b.formatting.black,
 	-- Set a linter
 
-	b.diagnostics.selene,
-	b.diagnostics.flake8,
+	b.diagnostics.pylint,
 	
 	-- set for code actions
 	
@@ -32,7 +31,7 @@ null_ls.setup({
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
-					vim.lsp.buf.format({
+					vim.lsp.buf.formatting_sync({
 						bufnr = bufnr,
 						timeout_ms = 5000,
 						filter = function()

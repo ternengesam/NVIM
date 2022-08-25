@@ -159,7 +159,7 @@ local plugins = {
 	},
 
 	-- signature help provider
-	["ray-x/lsp_signature.nvim"] = { event = "InsertEnter" },
+	["ray-x/lsp_signature.nvim"] = { event="BufEnter"},
 
 	-- LSP symbols
 

@@ -26,7 +26,7 @@ mv ~/.config/nvim ~/.config/nvim.bak
 ##### clone this repository and install
 
 ```
-git clone https://github.com/3egle/NVINIDE ~/.config/nvim/
+git clone https://github.com/3egle/NVIN ~/.config/nvim/
 nvim +PackerSync
 
 ```

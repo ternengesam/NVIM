@@ -1,5 +1,5 @@
 
-### my neovim configurations that makes work easier for me
+### my neovim configuration
 
 #### screen shots
 ![nvimide](https://user-images.githubusercontent.com/61257646/184257992-c453974f-408c-4085-897f-b3d5b24013c5.png)

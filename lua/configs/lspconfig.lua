@@ -6,7 +6,6 @@ end
 
 local M = {}
 
--- export on_attach & capabilities for custom lspconfigs
 if not present then
   return
 end
